@@ -30,26 +30,27 @@ module.exports = {
 
     //first search for the brands
 
-    var matchA = Brands.find({}).exec( function brandList(err, data){
+    var matchA = Brands.find({},function brandList(err, data){
 
        if (err) return next(err);
 
       _.each(dumpData, function(pattern){
-            var w = pattern.word.toString();
+        var w = pattern.word.toString();
         _.each(data, function (brand) {
-            var b = brand.name.toString();
-            if(w.match(b)){
-              console.log('found '+b);
-              pattern.att = 'bold';
-            }
+          var b = brand.name.toString();
+          if(w.match(b)){
+            console.log('found '+b);
+            pattern.att = 'bold';
+          }
 
         });
       });
 
+      console.log(dumpData);
+
     });
 
-
-    var matchB =  ClothingTypes.find({}, function ClothingList(err, data){
+    ClothingTypes.find({}, function ClothingList(err, data){
 
         if (err) return next(err);
 
@@ -62,13 +63,13 @@ module.exports = {
              console.log('found '+b);
              pattern.att = 'italic';
            }
-
          });
        });
 
+        console.log(dumpData);
+
      });
 
-    console.log(dumpData);
 
 
     // Set status code
