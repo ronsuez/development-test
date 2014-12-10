@@ -26,19 +26,15 @@ $(function(){
           console.log(value);
 
           if(value.att=='bold'){
-
             result += " <b>"+value.word+"</b> ";
           }else if(value.att=='italic'){
-
             result += " <i>"+value.word+"</i> ";
           }else{
-
             result += " "+value.word+" ";
           }
 
         });
         $('#result').html();
-        
         $('#result').append(result);
       }
     });
