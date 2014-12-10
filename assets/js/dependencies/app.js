@@ -20,7 +20,7 @@ $(function(){
 
 
         var result = "";
-        
+
         $.each(data,function(index,value){
           if(value.att=='bold'){
             result += " <b>"+value.word+"</b> ";
@@ -31,12 +31,8 @@ $(function(){
           }
 
         });
-<<<<<<< HEAD
-        $('#result').html("");
 
-=======
         $('#result').html(" ");
->>>>>>> a0594852661a9f95d6faafc08c3974f58ac4b20b
         $('#result').append(result);
       }
     });
