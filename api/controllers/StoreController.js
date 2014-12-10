@@ -23,7 +23,7 @@ module.exports = {
       dumpData.push(data);
     });
 
-    var matchB = Brands.find({}, function ClothingList(err, data) {
+    var matchB = Brands.find({}, function BrandList(err, data) {
 
       if (err) return next(err);
 
@@ -60,6 +60,7 @@ module.exports = {
         });
       });
 
+      console.log('---Result---');
       console.log(dumpData);
 
       res.status(200);
