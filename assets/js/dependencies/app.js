@@ -20,11 +20,8 @@ $(function(){
 
 
         var result = "";
-
+        
         $.each(data,function(index,value){
-
-          console.log(value);
-
           if(value.att=='bold'){
             result += " <b>"+value.word+"</b> ";
           }else if(value.att=='italic'){
@@ -34,7 +31,7 @@ $(function(){
           }
 
         });
-        $('#result').html();
+        $('#result').html(" ");
         $('#result').append(result);
       }
     });
