@@ -14,6 +14,7 @@ La vista store/index contiene el formulario con el campo de busqueda.
  
  El controlador StoreController contiene el action 'search' donde se realiza el proceso de busqueda.
    En este action , se recibe el patron de busqueda y se construye una estructura con el siguiente formato.
+      
       data = {
             [word: 'hugo',
             att: ''],
