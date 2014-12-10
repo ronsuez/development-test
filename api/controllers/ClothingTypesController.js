@@ -1,7 +1,7 @@
 /**
  * ClothingTypesController
  *
- * @description :: Server-side logic for managing clothingtypes
+ * @description :: Server-side logic for managing Clothingtypes
  * @help        :: See http://links.sailsjs.org/docs/controllers
  */
 

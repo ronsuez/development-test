@@ -21,9 +21,9 @@ La vista store/index contiene el formulario con el campo de busqueda.
   
       data = {
             [word: 'hugo', att: ''],
-             [word: 'boss', att: ''],
-             [word: 'pants', att: ''],
-             [word: 'red', att: '']
+            [word: 'boss', att: ''],
+            [word: 'pants', att: ''],
+            [word: 'red', att: '']
     }
             
   Una vez que se tiene esta estructura, se realizan las querys a la tabla de marcas y de tipos de ropa , haciendo la comparación
@@ -31,16 +31,16 @@ La vista store/index contiene el formulario con el campo de busqueda.
    
     data = {
             [word: 'hugo', att: 'bold'],
-             [word: 'boss', att: 'bold'],
-             [word: 'pants', att: 'italic'],
-             [word: 'red', att: '']
+            [word: 'boss', att: 'bold'],
+            [word: 'pants', att: 'italic'],
+            [word: 'red', att: '']
     }
             
   
 ###Instalación y Corrida del Proyecto
     
    - Clonar el repositorio.
-   - Instalar las dependencias el comando npm-install.
+   - Instalar las dependencias con el comando npm-install.
    - Levantar el Daemon de MongoDB con el comando mongod.
    - Correr la Aplicación con el comando sails lift.
     
