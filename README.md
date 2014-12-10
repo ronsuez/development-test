@@ -38,10 +38,14 @@ La vista store/index contiene el formulario con el campo de busqueda.
             
   
 ###Instalación y Corrida del Proyecto
-    
-   - Clonar el repositorio.
-   - Instalar las dependencias con el comando npm-install.
-   - Levantar el Daemon de MongoDB con el comando mongod.
-   - Correr la Aplicación con el comando sails lift.
+   
+   - Instalar node.js.
+   - Instalar sails.js (version => 0.10.5).
+   - Instalar  mongodb.
+   - Clonar el repositorio y entrar en el directorio de la aplicación.
+   - Instalar las dependencias corriendo el comando npm-install.
+   - Levantar el Daemon de MongoDB corriendo el comando mongod.
+   - Restaurar la Base de Datos corriendo el comando (mongorestore dump/)
+   - Correr la Aplicación con el corriendo sails lift.
     
 
