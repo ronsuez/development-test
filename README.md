@@ -45,5 +45,12 @@ La vista store/index contiene el formulario con el campo de busqueda.
             }
             
   
-  
+ ### Instalación y Corrida del Proyecto
+    
+    - Clonar el repositorio.
+    - Realizar el comando npm-install.
+    - Instalar la librería sails-mongo (npm install sails-mongo).
+    - Levantar el Daemon mongod.
+    - Correr la Aplicación con el comando sails lift.
+    
 
