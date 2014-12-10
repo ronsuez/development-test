@@ -37,8 +37,8 @@ $(function(){
           }
 
         });
-        $('#result').html();
-        
+        $('#result').html("");
+
         $('#result').append(result);
       }
     });
