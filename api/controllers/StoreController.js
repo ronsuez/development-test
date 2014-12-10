@@ -12,76 +12,63 @@ module.exports = {
     var sails = req._sails;
     var query = req.param('query');
 
-    var dumpData = new Array();
-
     var params = query.split(" ");
 
-    _.each(params,function(value){
-        var data ={
-            word: value,
-            att: ''
-        }
-
-        dumpData.push(data);
-
+    var dumpData = new Array();
+    _.each(params, function (value) {
+      var data = {
+        word: value,
+        att: ''
+      }
+      dumpData.push(data);
     });
-    //the algorithm!!
 
+    var matchB = Brands.find({}, function ClothingList(err, data) {
 
-    //first search for the brands
+      if (err) return next(err);
 
-    var matchA = Brands.find({},function brandList(err, data){
+      _.each(data, function (ctype) {
+        var w = ctype.name.toString().toUpperCase();
 
-       if (err) return next(err);
+        // Aqui vendria el 2do foreach
 
-      _.each(dumpData, function(pattern){
-        var w = pattern.word.toString();
-        _.each(data, function (brand) {
-          var b = brand.name.toString();
-          if(w.match(b)){
-            console.log('found '+b);
+        _.each(dumpData, function (pattern) {
+          var b = pattern.word.toString().toUpperCase();
+
+          if (w.match(b)) {
+            console.log('found ' + b);
             pattern.att = 'bold';
           }
+        });
+      });
+    });
 
+    var matchB = ClothingTypes.find({}, function ClothingList(err, data) {
+
+      if (err) return next(err);
+
+      _.each(data, function (ctype) {
+        var w = ctype.name.toString().toUpperCase();
+
+        _.each(dumpData, function (pattern) {
+          var b = pattern.word.toString().toUpperCase();
+
+          if (w.match(b)) {
+            console.log('found ' + b);
+            pattern.att = 'italic';
+          }
         });
       });
 
       console.log(dumpData);
 
+      res.status(200);
+
+      return res.json(dumpData);
+
+
     });
-
-    ClothingTypes.find({}, function ClothingList(err, data){
-
-        if (err) return next(err);
-
-       _.each(dumpData, function(pattern){
-         var w = pattern.word.toString();
-         _.each(data, function (ctype) {
-           var b = ctype.name.toString();
-
-           if(w.match(b)){
-             console.log('found '+b);
-             pattern.att = 'italic';
-           }
-         });
-       });
-
-        console.log(dumpData);
-
-     });
-
-
-
-    // Set status code
-    res.status(200);
-
-    var data = {
-      res: params
-    }
-
-    // If appropriate, serve data as JSON(P)
-      return data;
-
   }
+
 };
 
