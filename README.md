@@ -2,7 +2,7 @@
 
 a [Sails](http://sailsjs.org) application
 
-### Estructra del Proyecto
+### Estructura del Proyecto
 
  - Se crearon dos modelos: Brands, ClothingTypes.
  - Se trabajo con mongodb creando la colleción "online-store".
@@ -14,15 +14,16 @@ a [Sails](http://sailsjs.org) application
 
 La vista store/index contiene el formulario con el campo de busqueda.
 
- En el archivo assets/js/dependencies/app.js se especifica la logica del cliente.
-     En este archivo hay una llamada al servidor via ajax, la cual envía el patrón de busqueda del usuario,
+ En el archivo assets/js/dependencies/app.js se especifica la lógica del cliente.
+ 
+    -  En este archivo hay una llamada al servidor via ajax, la cual envía el patrón de busqueda del usuario,
      y una vez que el servidor retorne la respuesta, se formatean las palabras que coincidan con la marca y con el tipo de ropa
      según los requerimientos.
    
  
  El controlador StoreController contiene el action 'search' donde se realiza el proceso de busqueda.
    En este action , se recibe el patron de busqueda y se construye una estructura con el siguiente formato.
-      
+  
       data = {
             [word: 'hugo',
             att: ''],
