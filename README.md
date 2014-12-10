@@ -4,10 +4,10 @@ a [Sails](http://sailsjs.org) application
 
 ### Estructra del Proyecto
 
- -Se crearon dos modelos: Brands, ClothingTypes.
- -Se trabajo con mongodb creando la colleción "online-store".
- -Para el manejo del DOM se utilizó Jquery.
- -Para el maquetado se utilizó el framework Foundation 5.
+ - Se crearon dos modelos: Brands, ClothingTypes.
+ - Se trabajo con mongodb creando la colleción "online-store".
+ - Para el manejo del DOM se utilizó Jquery.
+ - Para el maquetado se utilizó el framework Foundation 5.
  
 
 ### Funcionamiento de la aplicación
