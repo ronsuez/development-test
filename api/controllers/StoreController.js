@@ -7,69 +7,95 @@
 
 module.exports = {
 
-  'search':function  (req,res,next) {
+  'search':function  (req,res) {
 
-    var sails = req._sails;
+
     var query = req.param('query');
+    
+    console.log(query);
 
     var params = query.split(" ");
 
-    var dumpData = new Array();
-    _.each(params, function (value) {
-      var data = {
-        word: value,
-        att: ''
+    async.waterfall([
+      function createObject(callback){
+
+        console.log('----New Data--');
+
+        console.log(params);
+
+        var dumpData = new Array();
+        _.each(params, function (value) {
+          var data = {
+            word: value,
+            att: ''
+          }
+          dumpData.push(data);
+        });
+
+        callback(null, dumpData);
+    },
+      function findByBrands(rawData, callback){
+        console.log('find By Brands');
+
+        Brands.find({}, function BrandList(err, data) {
+
+          if (err) callback(err);
+
+          _.each(data, function (ctype) {
+            var w = ctype.name.toString().toUpperCase();
+
+            _.each(rawData, function (pattern) {
+              var b = pattern.word.toString().toUpperCase();
+
+              if (w.match(b)) {
+                console.log('found ' + b);
+                pattern.att = 'bold';
+              }
+            });
+          });
+
+          callback(null,rawData);
+        });
+      },
+      function findByClothesTypes(rawData, callback) {
+        console.log('find By Clothes Types');
+        ClothingTypes.find({}, function ClothingList(err, data) {
+
+          if (err) callback(err);
+
+          _.each(data, function (ctype) {
+            var w = ctype.name.toString().toUpperCase();
+
+            _.each(rawData, function (pattern) {
+              var b = pattern.word.toString().toUpperCase();
+
+              if (w.match(b)) {
+                console.log('found ' + b);
+                pattern.att = 'italic';
+              }
+            });
+          });
+
+          callback(null,rawData);
+
+        });
       }
-      dumpData.push(data);
-    });
+    ], function (err, result){
 
-    var matchB = Brands.find({}, function BrandList(err, data) {
-
-      if (err) return next(err);
-
-      _.each(data, function (ctype) {
-        var w = ctype.name.toString().toUpperCase();
-
-        // Aqui vendria el 2do foreach
-
-        _.each(dumpData, function (pattern) {
-          var b = pattern.word.toString().toUpperCase();
-
-          if (w.match(b)) {
-            console.log('found ' + b);
-            pattern.att = 'bold';
-          }
-        });
-      });
-    });
-
-    var matchB = ClothingTypes.find({}, function ClothingList(err, data) {
-
-      if (err) return next(err);
-
-      _.each(data, function (ctype) {
-        var w = ctype.name.toString().toUpperCase();
-
-        _.each(dumpData, function (pattern) {
-          var b = pattern.word.toString().toUpperCase();
-
-          if (w.match(b)) {
-            console.log('found ' + b);
-            pattern.att = 'italic';
-          }
-        });
+      if(err)
+        return res.badRequest({
+        err: err
       });
 
       console.log('---Result---');
-      console.log(dumpData);
+      console.log(result);
 
-      res.status(200);
-
-      return res.json(dumpData);
-
+      return res.ok({
+        status: 'success',
+        data: result
+      });
 
     });
   }
-
 };
 

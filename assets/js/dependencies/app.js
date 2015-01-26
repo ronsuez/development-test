@@ -16,8 +16,9 @@ $(function(){
       type: "POST",
       url: '/clothes/search',
       data: data,
-      success: function(data){
+      success: function(response){
 
+        var data = response.data;
 
         var result = "";
 
